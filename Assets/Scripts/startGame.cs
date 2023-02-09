@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class startGame : MonoBehaviour
 {
+    public float distanceFromGround = 0f;
     // Start is called before the first frame update
     void Start()
     {
