@@ -69,22 +69,14 @@ public class playerMovement : MonoBehaviour
                 numSpins += 1;
             }
         }
-        else if (Input.GetKeyDown(KeyCode.Space) && gameObject.transform.position.y <= 1.5)
+
+        /*else if (Input.GetKeyDown(KeyCode.Space) && gameObject.transform.position.y <= 1.5)
         {
             Application.Quit();
             print("You lose!");
-        }
-
-        /*if (gameObject.transform.position.y == 1.5)
-        {
-            if (numSpins % 2 != 0)
-            {
-                Application.Quit();
-                print("You lose!");
-            }
         }*/
 
-        if (gameObject.transform.position.y == 0.66 && (gameObject.transform.rotation.z > 40 || gameObject.transform.rotation.z < -40))
+       if (gameObject.transform.position.y <= 0.7 && ((gameObject.transform.localEulerAngles.z % 360) > 40 || gameObject.transform.localEulerAngles.z % 360 < -40))
         {
             Application.Quit();
             print("You lose!");
