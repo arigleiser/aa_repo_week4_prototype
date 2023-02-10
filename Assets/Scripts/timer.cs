@@ -10,7 +10,7 @@ public class timer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        disvar.text = "";
     }
 
     // Update is called once per frame
@@ -21,7 +21,7 @@ public class timer : MonoBehaviour
             countdown -= Time.deltaTime;
         }
         double b = System.Math.Round(countdown, 2);
-        disvar.text = b.ToString();
+        disvar.text = "Time Remaining: " + b.ToString();
         if (countdown < 0)
         {
             disvar.text = "Game Over!";
