@@ -631,6 +631,7 @@ MonoBehaviour:
   jumpforce: 16
   playRight: {fileID: 432438559}
   playLeft: {fileID: 432438560}
+  stamina: 100
 --- !u!50 &432438555
 Rigidbody2D:
   serializedVersion: 4
