@@ -13,6 +13,7 @@ public class playerMovement : MonoBehaviour
     public LayerMask groundlayer;
     public float jumpforce;
     float upspeed;
+
     public AudioSource playRight;
     public AudioSource playLeft;
     int numSpins = 0;
@@ -30,6 +31,7 @@ public class playerMovement : MonoBehaviour
         {
             upspeed = 250f;
         }
+
         isGrounded = Physics2D.OverlapCircle(groundcheck.position, radius, groundlayer);
         movex = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(movex * speed, rb.velocity.y);
@@ -40,7 +42,7 @@ public class playerMovement : MonoBehaviour
         }
         if (movex < 0)
         {
-            transform.rotation = Quaternion.Euler(new Vector2(0, 100));
+            transform.rotation = Quaternion.Euler(new Vector2(0, 180));
         }
         if (isGrounded && Input.GetKeyDown(KeyCode.DownArrow))
         {
