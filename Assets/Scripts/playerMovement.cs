@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class playerMovement : MonoBehaviour
 {
@@ -16,7 +17,8 @@ public class playerMovement : MonoBehaviour
 
     public AudioSource playRight;
     public AudioSource playLeft;
-    int numSpins = 0;
+    int numSpins = 1;
+    public TMP_Text numSpinText;
 
     public int stamina = 100;
    
@@ -61,28 +63,18 @@ public class playerMovement : MonoBehaviour
             playLeft.Play();
             this.transform.Translate(new Vector3(-10f, 0f, 0f) * Time.deltaTime, Space.World);
         }
-        if (Input.GetKeyDown(KeyCode.Space)&& gameObject.transform.position.y > 1.5)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             spin();
-            if (gameObject.transform.position.y > 1.5)
-            {
-                numSpins += 1;
-            }
+            numSpins += 1;
+            Debug.Log("Num Spins: " + numSpins);
         }
-        else if (Input.GetKeyDown(KeyCode.Space) && gameObject.transform.position.y <= 1.5)
-        {
-            Application.Quit();
-            print("You lose!");
-        }
-
-        /*if (gameObject.transform.position.y == 1.5)
-        {
-            if (numSpins % 2 != 0)
-            {
-                Application.Quit();
-                print("You lose!");
-            }
-        }*/
+        //else if (Input.GetKeyDown(KeyCode.Space) && gameObject.transform.position.y <= 1.5)
+        //{
+        //    numSpins += 1;
+        //    Application.Quit();
+        //    print("You lose!");
+        //}
 
         if (gameObject.transform.position.y == 0.66 && (gameObject.transform.rotation.z > 40 || gameObject.transform.rotation.z < -40))
         {
@@ -108,6 +100,8 @@ public class playerMovement : MonoBehaviour
     private void spin()
     {
         // spin
+        // numSpins += 1;
         transform.Rotate(Vector3.forward * -90);
+        numSpinText.text = "Number of Flips: " + (numSpins / 2).ToString();
     }
 }
