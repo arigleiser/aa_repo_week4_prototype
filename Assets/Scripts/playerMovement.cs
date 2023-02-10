@@ -19,6 +19,7 @@ public class playerMovement : MonoBehaviour
     public AudioSource playLeft;
     int numSpins = 1;
     public TMP_Text numSpinText;
+    public bool isAlive;
 
     public int stamina = 100;
    
@@ -27,6 +28,7 @@ public class playerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        isAlive = true;
     }
 
     // Update is called once per frame
@@ -78,7 +80,9 @@ public class playerMovement : MonoBehaviour
 
         if (gameObject.transform.position.y == 0.66 && (gameObject.transform.rotation.z > 40 || gameObject.transform.rotation.z < -40))
         {
-            Application.Quit();
+            // Application.Quit();
+            // pause time
+            isAlive = false;
             print("You lose!");
         }
     }
