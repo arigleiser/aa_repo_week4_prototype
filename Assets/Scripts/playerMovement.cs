@@ -13,6 +13,9 @@ public class playerMovement : MonoBehaviour
     public LayerMask groundlayer;
     public float jumpforce;
     float upspeed;
+    public AudioSource playRight;
+    public AudioSource playLeft;
+    int numSpins = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +28,7 @@ public class playerMovement : MonoBehaviour
     {
         if (isGrounded)
         {
-            upspeed = 500f;
+            upspeed = 250f;
         }
         isGrounded = Physics2D.OverlapCircle(groundcheck.position, radius, groundlayer);
         movex = Input.GetAxis("Horizontal");
@@ -43,6 +46,38 @@ public class playerMovement : MonoBehaviour
         {
             rb.velocity = Vector2.up * jumpforce;
         }
+        if (isGrounded == false && Input.GetKey(KeyCode.RightArrow))
+        {
+            playRight.Play();
+            this.transform.Translate(new Vector3(10f, 0f, 0f) * Time.deltaTime, Space.World);
+        }
+        if (isGrounded == false && Input.GetKey(KeyCode.RightArrow))
+        {
+            playLeft.Play();
+            this.transform.Translate(new Vector3(-10f, 0f, 0f) * Time.deltaTime, Space.World);
+        }
+        if (Input.GetKeyDown(KeyCode.Space)&& gameObject.transform.position.y > 1.5)
+        {
+            spin();
+            if (gameObject.transform.position.y > 1.5)
+            {
+                numSpins += 1;
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.Space) && gameObject.transform.position.y <= 1.5)
+        {
+            Application.Quit();
+            print("You lose!");
+        }
+
+        if (gameObject.transform.position.y == 1.5)
+        {
+            if (numSpins % 2 != 0)
+            {
+                Application.Quit();
+                print("You lose!");
+            }
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -57,5 +92,11 @@ public class playerMovement : MonoBehaviour
 
             rb.AddForce(new Vector2(0, upspeed));
         }
+    }
+
+    private void spin()
+    {
+        // spin
+        transform.Rotate(Vector3.forward * -90);
     }
 }
