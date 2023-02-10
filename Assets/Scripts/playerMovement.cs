@@ -18,6 +18,9 @@ public class playerMovement : MonoBehaviour
     public AudioSource playLeft;
     int numSpins = 0;
 
+    public int stamina = 100;
+   
+
     // Start is called before the first frame update
     void Start()
     {
@@ -72,7 +75,16 @@ public class playerMovement : MonoBehaviour
             print("You lose!");
         }
 
-        if (gameObject.transform.position.y == 1.5)
+        /*if (gameObject.transform.position.y == 1.5)
+        {
+            if (numSpins % 2 != 0)
+            {
+                Application.Quit();
+                print("You lose!");
+            }
+        }*/
+
+        if (gameObject.transform.position.y == 0.66 && (gameObject.transform.rotation.z > 40 || gameObject.transform.rotation.z < -40))
         {
             if (numSpins % 2 != 0)
             {
