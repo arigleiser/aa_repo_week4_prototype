@@ -86,11 +86,8 @@ public class playerMovement : MonoBehaviour
 
         if (gameObject.transform.position.y == 0.66 && (gameObject.transform.rotation.z > 40 || gameObject.transform.rotation.z < -40))
         {
-            if (numSpins % 2 != 0)
-            {
-                Application.Quit();
-                print("You lose!");
-            }
+            Application.Quit();
+            print("You lose!");
         }
     }
 
