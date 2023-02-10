@@ -21,7 +21,7 @@ public class timer : MonoBehaviour
             countdown -= Time.deltaTime;
         }
         double b = System.Math.Round(countdown, 2);
-        disvar.text = "Time Remaining: " + b.ToString();
+        disvar.text = b.ToString();
         if (countdown < 0)
         {
             disvar.text = "Game Over!";
