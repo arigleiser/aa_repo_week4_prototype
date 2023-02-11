@@ -80,6 +80,12 @@ public class playerMovement : MonoBehaviour
         //    print("You lose!");
         //}
 
+        if (gameObject.transform.position.y < -0.8400002)
+        {
+            isAlive = false;
+            loose.Play();
+        }
+
         if (gameObject.transform.position.y <= 0.66 && (gameObject.transform.rotation.z > 40 || gameObject.transform.rotation.z < -40))
         {
             // Application.Quit();
