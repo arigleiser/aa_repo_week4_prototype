@@ -779,8 +779,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   jumpforce: 16
-  playRight: {fileID: 432438559}
-  playLeft: {fileID: 432438560}
   numSpinText: {fileID: 1209397635}
   isAlive: 0
   loose: {fileID: 0}
@@ -1110,8 +1108,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   jumpforce: 0
-  playRight: {fileID: 432438559}
-  playLeft: {fileID: 432438560}
   numSpinText: {fileID: 1209397635}
   isAlive: 0
   loose: {fileID: 432438562}
@@ -4263,7 +4259,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1827294496}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: f613b57f9207e40aa83481c24e489a13, type: 3}
