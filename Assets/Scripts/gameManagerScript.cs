@@ -19,9 +19,22 @@ public class gameManagerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player.isAlive == false || clock.isAlive == false || obstacles.isAlive == false || floor.isAlive == false)
+        if (player.isAlive == false)
         {
             restart_quit.SetActive(true);
         }
+        else if (clock.isAlive == false)
+        {
+            restart_quit.SetActive(true);
+        }
+        //else if (obstacles.isAlive == false)
+        //{
+        //    restart_quit.SetActive(true);
+        //}
+        // idk why this doesn't work- im trying to make it so that if it touches the floor, they lose
+        //else if (floor.isAlive == false)
+        //{
+        //    restart_quit.SetActive(true);
+        //}
     }
 }

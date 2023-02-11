@@ -20,8 +20,10 @@ public class playerMovement : MonoBehaviour
     int numSpins = 1;
     public TMP_Text numSpinText;
     public bool isAlive;
+    public AudioSource loose;
 
     public int stamina = 100;
+    
    
 
     // Start is called before the first frame update
@@ -78,7 +80,7 @@ public class playerMovement : MonoBehaviour
         //    print("You lose!");
         //}
 
-        if (gameObject.transform.position.y == 0.66 && (gameObject.transform.rotation.z > 40 || gameObject.transform.rotation.z < -40))
+        if (gameObject.transform.position.y <= 0.66 && (gameObject.transform.rotation.z > 40 || gameObject.transform.rotation.z < -40))
         {
             // Application.Quit();
             // pause time
@@ -91,13 +93,18 @@ public class playerMovement : MonoBehaviour
     {
         if (collision.gameObject.tag == "trampoline" && isGrounded == false)
         {
-            upspeed += 150f;
-            if (upspeed >= 1400f)
-            {
-                upspeed = 1400f;
-            }
+            upspeed += 100f;
+            //if (upspeed >= 1400f)
+            //{
+            //    upspeed = 1400f;
+            //}
 
             rb.AddForce(new Vector2(0, upspeed));
+            if (numSpins != 1 && numSpins / 2 != 0)
+            {
+                isAlive = false;
+                loose.Play();
+            }
         }
     }
 

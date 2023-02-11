@@ -4,41 +4,25 @@ using UnityEngine;
 
 public class obstacles : MonoBehaviour
 {
-    public GameObject obstacle;
-    public static float spawnTime;
-    public float decrease;
-    public float increment;
-    public float timerOne;
-    public float timerTwo;
-    public float range;
+    // public GameObject obstacle;
+    public float speed = 10.0f;
+    private Rigidbody2D rb;
+    private Vector2 screenBounds;
     public AudioSource collissionSound;
     public bool isAlive;
 
     private void Start()
     {
-        spawnTime = 0.6f;
-        timerOne = 0;
-        timerTwo = 0;
-        isAlive = true;
+        rb = this.GetComponent<Rigidbody2D>();
+        rb.velocity = new Vector2(0, -speed);
+        screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
     }
 
     private void Update()
     {
-        if (timerTwo > decrease)
+        if (transform.position.y < screenBounds.y * 2)
         {
-            if (spawnTime > 0.25)
-            {
-                spawnTime -= increment;
-            }
-            timerTwo = 0;
-        }
-
-        if (timerOne > spawnTime)
-        {
-            GameObject newObstacle = Instantiate(obstacle);
-            newObstacle.transform.position = new Vector3(0, 8, 0);
-            newObstacle.transform.position += new Vector3(Random.Range(-range, range), 0, 0);
-            timerOne = 0;
+            Destroy(this.gameObject);
         }
     }
 
