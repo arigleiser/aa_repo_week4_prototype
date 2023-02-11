@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class timer : MonoBehaviour
 {
-    float countdown = 10f;
+    float countdown = 60f;
     public TMP_Text disvar;
     public bool isAlive;
     // Start is called before the first frame update
