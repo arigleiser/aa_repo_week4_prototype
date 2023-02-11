@@ -38,8 +38,8 @@ public class playerMovement : MonoBehaviour
     void Update()
     {
 
-        Debug.Log(angleRotated);
-        Debug.Log(numSpins);
+        Debug.Log("eulerAngles: " + transform.eulerAngles);
+        Debug.Log("localEulerAngles: " + transform.localEulerAngles);
         numSpinText.text = "Number of Flips: " + (numSpins).ToString();
 
 
@@ -95,7 +95,6 @@ public class playerMovement : MonoBehaviour
         {
             spin();
             numSpins += 1;
-            Debug.Log("Num Spins: " + numSpins);
         }*/
 
 
@@ -108,13 +107,13 @@ public class playerMovement : MonoBehaviour
             loose.Play();
         }
 
-        /*if (gameObject.transform.position.y <= 1 && (gameObject.transform.localEulerAngles.z % 360 > 40 || gameObject.transform.localEulerAngles.z % 360 < -40))
+        if (gameObject.transform.position.y <= 1 && (gameObject.transform.eulerAngles.z > 40 && gameObject.transform.eulerAngles.z < 320))
         {
             // Application.Quit();
             // pause time
             isAlive = false;
             print("You lose!");
-        }*/
+        }
 
 
     }
