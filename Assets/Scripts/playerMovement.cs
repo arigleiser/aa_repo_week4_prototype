@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class playerMovement : MonoBehaviour
 {
@@ -16,15 +17,20 @@ public class playerMovement : MonoBehaviour
 
     public AudioSource playRight;
     public AudioSource playLeft;
-    int numSpins = 0;
+    int numSpins = 1;
+    public TMP_Text numSpinText;
+    public bool isAlive;
+    public AudioSource loose;
 
     public int stamina = 100;
+    
    
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        isAlive = true;
     }
 
     // Update is called once per frame
@@ -61,24 +67,30 @@ public class playerMovement : MonoBehaviour
             playLeft.Play();
             this.transform.Translate(new Vector3(-10f, 0f, 0f) * Time.deltaTime, Space.World);
         }
-        if (Input.GetKeyDown(KeyCode.Space)&& gameObject.transform.position.y > 1.5)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             spin();
-            if (gameObject.transform.position.y > 1.5)
-            {
-                numSpins += 1;
-            }
+            numSpins += 1;
+            Debug.Log("Num Spins: " + numSpins);
+        }
+        //else if (Input.GetKeyDown(KeyCode.Space) && gameObject.transform.position.y <= 1.5)
+        //{
+        //    numSpins += 1;
+        //    Application.Quit();
+        //    print("You lose!");
+        //}
+
+        if (gameObject.transform.position.y < -0.8400002)
+        {
+            isAlive = false;
+            loose.Play();
         }
 
-        /*else if (Input.GetKeyDown(KeyCode.Space) && gameObject.transform.position.y <= 1.5)
+        if (gameObject.transform.position.y <= 0.66 && (gameObject.transform.rotation.z > 40 || gameObject.transform.rotation.z < -40))
         {
-            Application.Quit();
-            print("You lose!");
-        }*/
-
-       if (gameObject.transform.position.y <= 0.7 && ((gameObject.transform.localEulerAngles.z % 360) > 40 || gameObject.transform.localEulerAngles.z % 360 < -40))
-        {
-            Application.Quit();
+            // Application.Quit();
+            // pause time
+            isAlive = false;
             print("You lose!");
         }
     }
@@ -87,19 +99,26 @@ public class playerMovement : MonoBehaviour
     {
         if (collision.gameObject.tag == "trampoline" && isGrounded == false)
         {
-            upspeed += 150f;
-            if (upspeed >= 1400f)
-            {
-                upspeed = 1400f;
-            }
+            upspeed += 100f;
+            //if (upspeed >= 1400f)
+            //{
+            //    upspeed = 1400f;
+            //}
 
             rb.AddForce(new Vector2(0, upspeed));
+            if (numSpins != 1 && numSpins / 2 != 0)
+            {
+                isAlive = false;
+                loose.Play();
+            }
         }
     }
 
     private void spin()
     {
         // spin
+        // numSpins += 1;
         transform.Rotate(Vector3.forward * -90);
+        numSpinText.text = "Number of Flips: " + (numSpins / 2).ToString();
     }
 }
