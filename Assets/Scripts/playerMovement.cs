@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class playerMovement : MonoBehaviour
 {
@@ -21,26 +23,35 @@ public class playerMovement : MonoBehaviour
     int numSpins = 0;
     public TMP_Text numSpinText;
     public bool isAlive;
+    private bool isSpinning;
     public AudioSource loose;
 
-    public int stamina = 100;
-    
-   
+    public float maxRotateSpeed = 300;
+    private float rotateSpeed;
+    public float stamina = 100;
+    public Slider staminaBar;
+
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         isAlive = true;
+        isSpinning = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        Debug.Log("eulerAngles: " + transform.eulerAngles);
-        Debug.Log("localEulerAngles: " + transform.localEulerAngles);
+        Debug.Log(isSpinning);
         numSpinText.text = "Number of Flips: " + (numSpins).ToString();
+
+        staminaBar.value = stamina;
+        if(stamina < 100 && !isSpinning)
+        {
+            stamina += Time.deltaTime * 5;
+        }
+        rotateSpeed = maxRotateSpeed * (stamina / 100);
 
 
         if (isGrounded)
@@ -87,7 +98,12 @@ public class playerMovement : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space))
         {
+            isSpinning = true;
             spin();                   //new control: HOLD space key to rotate
+        }
+        else
+        {
+            isSpinning = false;
         }
 
 
@@ -149,15 +165,16 @@ public class playerMovement : MonoBehaviour
     {
         if(transform.localScale.x == 1)
         {
-            transform.eulerAngles += Vector3.forward * -200 * Time.deltaTime;
+            transform.eulerAngles += Vector3.forward * -rotateSpeed * Time.deltaTime;
            
         }
         else
         {
-            transform.eulerAngles += Vector3.forward * 200 * Time.deltaTime;
+            transform.eulerAngles += Vector3.forward * rotateSpeed * Time.deltaTime;
         }
 
-        angleRotated += 400 * Time.deltaTime;
+        angleRotated += 2* rotateSpeed * Time.deltaTime;
+        stamina -= Time.deltaTime * 10;
         
 
         if (angleRotated >= 360)
