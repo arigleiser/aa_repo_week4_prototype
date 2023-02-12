@@ -43,13 +43,12 @@ public class playerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(isSpinning);
         numSpinText.text = "Number of Flips: " + (numSpins).ToString();
 
         staminaBar.value = stamina;
         if(stamina < 100 && !isSpinning)
         {
-            stamina += Time.deltaTime * 5;
+            stamina += Time.deltaTime * 10;
         }
         rotateSpeed = maxRotateSpeed * (stamina / 100);
 
@@ -62,6 +61,7 @@ public class playerMovement : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundcheck.position, radius, groundlayer);
         movex = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(movex * speed, rb.velocity.y);
+
 
        if (movex > 0)
         {
@@ -114,23 +114,26 @@ public class playerMovement : MonoBehaviour
         }*/
 
 
-
-
-
-        if (gameObject.transform.position.y < -0.8400002)
+        /*if (gameObject.transform.position.y < -0.8400002)
         {
             isAlive = false;
             loose.Play();
-        }
+        }*/
 
+
+        //checking lose conditions
         if (gameObject.transform.position.y <= 1 && (gameObject.transform.eulerAngles.z > 40 && gameObject.transform.eulerAngles.z < 320))
         {
+            isAlive = false;
             // Application.Quit();
             // pause time
-            isAlive = false;
-            print("You lose!");
+            //print("You lose!");
         }
 
+        if(stamina == 0)
+        {
+            isAlive = false;
+        }
 
     }
 
@@ -174,18 +177,17 @@ public class playerMovement : MonoBehaviour
         }
 
         angleRotated += 2* rotateSpeed * Time.deltaTime;
-        stamina -= Time.deltaTime * 10;
-        
+
+        if(stamina > 0)
+        {
+            stamina -= Time.deltaTime * 10;
+        }
 
         if (angleRotated >= 360)
         {
             numSpins++;
             angleRotated = 0;
         }
-
-
-        //gameObject.transform.rotation = Quaternion.Euler(Vector3.forward * -50/* * Time.deltaTime*/);
-
     }
 
     /*private void spin()

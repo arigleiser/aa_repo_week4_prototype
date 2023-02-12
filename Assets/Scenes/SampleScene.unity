@@ -405,7 +405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disvar: {fileID: 1372185260}
-  isAlive: 0
+  playerScript: {fileID: 0}
 --- !u!4 &300083446
 Transform:
   m_ObjectHideFlags: 0
@@ -755,7 +755,7 @@ GameObject:
   - component: {fileID: 432438562}
   m_Layer: 0
   m_Name: player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -782,7 +782,7 @@ MonoBehaviour:
   numSpinText: {fileID: 1209397635}
   isAlive: 0
   loose: {fileID: 0}
-  rotateSpeed: 300
+  maxRotateSpeed: 300
   stamina: 100
   staminaBar: {fileID: 518486172}
 --- !u!50 &432438555
@@ -1113,7 +1113,7 @@ MonoBehaviour:
   numSpinText: {fileID: 1209397635}
   isAlive: 0
   loose: {fileID: 432438562}
-  rotateSpeed: 300
+  maxRotateSpeed: 300
   stamina: 100
   staminaBar: {fileID: 518486172}
 --- !u!82 &432438562
@@ -2447,8 +2447,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf629dc7a642a4bc9bfa47985f8c35c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAlive: 0
   loseSound: {fileID: 798312192}
+  playerScript: {fileID: 432438554}
 --- !u!82 &798312192
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3337,10 +3337,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restart_quit: {fileID: 1355448853}
-  player: {fileID: 432438554}
+  playerScript: {fileID: 432438554}
   clock: {fileID: 300083445}
   obstacles: {fileID: 1677124726}
-  floor: {fileID: 798312191}
+  disvar: {fileID: 1372185260}
 --- !u!4 &1286554582
 Transform:
   m_ObjectHideFlags: 0

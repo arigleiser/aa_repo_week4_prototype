@@ -4,23 +4,22 @@ using UnityEngine;
 
 public class loseIfTouchFloor : MonoBehaviour
 {
-    public bool isAlive;
+    //public bool isAlive;
     public AudioSource loseSound;
+    public playerMovement playerScript;
+
     // Start is called before the first frame update
     void Start()
     {
-        isAlive = true;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<playerMovement>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        loseSound.Play();
-        isAlive = false;
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            loseSound.Play();
+            playerScript.isAlive = false;
+        }
     }
 }

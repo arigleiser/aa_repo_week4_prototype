@@ -8,12 +8,12 @@ public class timer : MonoBehaviour
 {
     float countdown = 60f;
     public TMP_Text disvar;
-    public bool isAlive;
+    public playerMovement playerScript;
     // Start is called before the first frame update
     void Start()
     {
         disvar.text = "";
-        isAlive = true;
+        playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<playerMovement>();
     }
 
     // Update is called once per frame
@@ -27,8 +27,8 @@ public class timer : MonoBehaviour
         disvar.text = "Seconds Remaining: " + b.ToString();
         if (countdown < 0)
         {
-            disvar.text = "Game Over!";
-            isAlive = false;
+            //disvar.text = "Game Over!";
+             playerScript.isAlive = false;
             // Application.Quit();
             // make reset and quit buttons appear
         }

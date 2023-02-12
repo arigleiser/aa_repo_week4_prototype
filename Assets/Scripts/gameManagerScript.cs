@@ -1,32 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class gameManagerScript : MonoBehaviour
 {
     public GameObject restart_quit;
-    public playerMovement player;
+    public playerMovement playerScript;
     public timer clock;
     public obstacles obstacles;
-    public loseIfTouchFloor floor;
-    
+    //public loseIfTouchFloor floor;
+
+    public TMP_Text disvar;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<playerMovement>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (player.isAlive == false)
+        if (playerScript.isAlive == false)
         {
-            restart_quit.SetActive(true);
+            gameOver();
         }
-        else if (clock.isAlive == false)
-        {
-            restart_quit.SetActive(true);
-        }
+
         //else if (obstacles.isAlive == false)
         //{
         //    restart_quit.SetActive(true);
@@ -36,5 +37,11 @@ public class gameManagerScript : MonoBehaviour
         //{
         //    restart_quit.SetActive(true);
         //}
+    }
+
+    public void gameOver()
+    {
+        disvar.text = "Game Over!";
+        restart_quit.SetActive(true);
     }
 }
