@@ -161,6 +161,12 @@ public class playerMovement : MonoBehaviour
             }
             angleRotated = 0;
         }
+        else if (collision.gameObject.tag == "Apple")
+        {
+            // loose.Play();
+            isAlive = false;
+            loose.Play();
+        }
     }
 
 

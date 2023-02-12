@@ -26,7 +26,7 @@ public class obstacles : MonoBehaviour
         Timer -= Time.deltaTime;
         if (Timer <= 0f)
         {
-            float spawnY = Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.height)).y;
+            float spawnY = Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.height)).y + 3.0f;
             ufoClone = Instantiate(ufo, new Vector3(Random.Range(-7, 7), spawnY, 0f), transform.rotation) as GameObject;
             Timer = 4f;
         }
