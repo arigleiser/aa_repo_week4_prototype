@@ -18,10 +18,10 @@ public class obstacles : MonoBehaviour
 
     void Update()
     {
-        if (touchApple.isAlive == false)
-        {
-            gm.gameOver();
-        }
+        //if (touchApple.isAlive == false)
+        //{
+        //    gm.gameOver();
+        //}
 
         Timer -= Time.deltaTime;
         if (Timer <= 0f)

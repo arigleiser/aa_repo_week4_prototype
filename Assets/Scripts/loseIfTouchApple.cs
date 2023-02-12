@@ -26,7 +26,7 @@ public class loseIfTouchApple : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        else if (collision.gameObject.tag == "Player")
+        else
         {
             isAlive = false;
         }
