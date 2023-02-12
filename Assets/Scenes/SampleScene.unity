@@ -405,7 +405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disvar: {fileID: 1372185260}
-  playerScript: {fileID: 0}
+  playerScript: {fileID: 432438554}
 --- !u!4 &300083446
 Transform:
   m_ObjectHideFlags: 0
@@ -1315,7 +1315,6 @@ GameObject:
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
   - component: {fileID: 519420033}
-  - component: {fileID: 519420034}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1435,20 +1434,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 432438552}
---- !u!114 &519420034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e67e382b02464f2ea1cf776d9063fda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  applePrefab: {fileID: 1263788618047452419, guid: 37d4c10fa20f54ebdabc46b1e466975b, type: 3}
-  respawnTime: 1
 --- !u!1 &593609632
 GameObject:
   m_ObjectHideFlags: 0
@@ -4134,7 +4119,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1677124726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4147,7 +4132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1cbbdf3cc25b4fbdaea89569d457833, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  applePrefab: {fileID: 1263788618047452419, guid: 37d4c10fa20f54ebdabc46b1e466975b, type: 3}
   collissionSound: {fileID: 1677124728}
   isAlive: 0
 --- !u!4 &1677124727
@@ -4158,7 +4143,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1677124725}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.25, y: 20.449997, z: 0}
+  m_LocalPosition: {x: 0, y: -0.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4506,7 +4491,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1827294496}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: f613b57f9207e40aa83481c24e489a13, type: 3}
@@ -5131,6 +5116,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: apple
       objectReference: {fileID: 0}
+    - target: {fileID: 1263788618047452419, guid: 37d4c10fa20f54ebdabc46b1e466975b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1263788618047452423, guid: 37d4c10fa20f54ebdabc46b1e466975b, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -5176,8 +5165,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7730834413586546015, guid: 37d4c10fa20f54ebdabc46b1e466975b, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 519420031}
+    - target: {fileID: 7730834413586546015, guid: 37d4c10fa20f54ebdabc46b1e466975b, type: 3}
+      propertyPath: applePrefab
+      value: 
+      objectReference: {fileID: 1024000576}
+    - target: {fileID: 7730834413586546015, guid: 37d4c10fa20f54ebdabc46b1e466975b, type: 3}
       propertyPath: collissionSound
       value: 
       objectReference: {fileID: 1024000581}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1263788618047452417, guid: 37d4c10fa20f54ebdabc46b1e466975b, type: 3}
+    - {fileID: 1263788618047452418, guid: 37d4c10fa20f54ebdabc46b1e466975b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 37d4c10fa20f54ebdabc46b1e466975b, type: 3}

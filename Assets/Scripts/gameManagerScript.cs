@@ -9,7 +9,7 @@ public class gameManagerScript : MonoBehaviour
     public GameObject restart_quit;
     public playerMovement playerScript;
     public timer clock;
-    public obstacles obstacles;
+    public loseIfTouchApple touchApple;
     //public loseIfTouchFloor floor;
 
     public TMP_Text disvar;
@@ -28,10 +28,10 @@ public class gameManagerScript : MonoBehaviour
             gameOver();
         }
 
-        //else if (obstacles.isAlive == false)
-        //{
-        //    restart_quit.SetActive(true);
-        //}
+        else if (touchApple.isAlive == false)
+        {
+            restart_quit.SetActive(true);
+        }
         // idk why this doesn't work- im trying to make it so that if it touches the floor, they lose
         //else if (floor.isAlive == false)
         //{
