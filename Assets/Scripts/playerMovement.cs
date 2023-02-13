@@ -31,6 +31,8 @@ public class playerMovement : MonoBehaviour
     public float stamina = 100;
     public Slider staminaBar;
 
+    public int numHearts = 3;
+
 
     // Start is called before the first frame update
     void Start()
@@ -43,12 +45,17 @@ public class playerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(numHearts == 0)
+        {
+            isAlive = false;
+        }
+
         numSpinText.text = "Number of Flips: " + (numSpins).ToString();
 
         staminaBar.value = stamina;
         if(stamina < 100 && !isSpinning)
         {
-            stamina += Time.deltaTime * 10;
+            stamina += Time.deltaTime * 20;
         }
         rotateSpeed = maxRotateSpeed * (stamina / 100);
 
@@ -122,9 +129,9 @@ public class playerMovement : MonoBehaviour
 
 
         //checking lose conditions
-        if (gameObject.transform.position.y <= 1 && (gameObject.transform.eulerAngles.z > 40 && gameObject.transform.eulerAngles.z < 320))
+        if (gameObject.transform.position.y <= 1 && (gameObject.transform.eulerAngles.z > 60 && gameObject.transform.eulerAngles.z < 300))
         {
-            isAlive = false;
+            numHearts--;
             // Application.Quit();
             // pause time
             //print("You lose!");
@@ -132,7 +139,7 @@ public class playerMovement : MonoBehaviour
 
         if(stamina == 0)
         {
-            isAlive = false;
+            numHearts = 0;
         }
 
     }
@@ -164,7 +171,7 @@ public class playerMovement : MonoBehaviour
         else if (collision.gameObject.tag == "Apple")
         {
             // loose.Play();
-            isAlive = false;
+            numHearts--;
             loose.Play();
         }
     }
