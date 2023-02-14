@@ -9,8 +9,8 @@ public class obstacles : MonoBehaviour
     public GameObject ufo;
     GameObject ufoClone;
     public loseIfTouchApple touchApple;
-    public gameManagerScript gm;
     public AudioSource appleFallingSound;
+    public playerMovement playerScript;
 
     void Start()
     {
@@ -19,13 +19,8 @@ public class obstacles : MonoBehaviour
 
     void Update()
     {
-        //if (touchApple.isAlive == false)
-        //{
-        //    gm.gameOver();
-        //}
-
         Timer -= Time.deltaTime;
-        if (Timer <= 0f)
+        if (Timer <= 0f && playerScript.isAlive)
         {
             float spawnY = Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.height)).y + 3.0f;
             ufoClone = Instantiate(ufo, new Vector3(Random.Range(-7, 7), spawnY, 0f), transform.rotation) as GameObject;

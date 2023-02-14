@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class buttonController : MonoBehaviour
 {
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +21,10 @@ public class buttonController : MonoBehaviour
 
     public void Restart()
     {
+        //if(Time.timeScale == 1)
+        //{
+        //}
+        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 

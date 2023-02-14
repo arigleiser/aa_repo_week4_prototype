@@ -41,7 +41,10 @@ public class gameManagerScript : MonoBehaviour
 
     public void gameOver()
     {
+        playerScript.bgm.Stop();
         disvar.text = "Game Over!";
         restart_quit.SetActive(true);
+        //Time.timeScale = 1;
     }
+
 }

@@ -19,7 +19,7 @@ public class loseIfTouchFloor : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             //loseSound.Play();
-            playerScript.numHearts--;
+            playerScript.numHearts = 0;
         }
     }
 }
