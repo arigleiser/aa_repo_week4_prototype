@@ -229,7 +229,7 @@ public class playerMovement : MonoBehaviour
         {
             numSpins++;
             scorePoint.Play();
-            angleRotated = 0;
+            angleRotated = 0; 
         }
     }
 
