@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class timer : MonoBehaviour
 {
-    float countdown = 5f;
+    float countdown = 60f;
     public TMP_Text disvar;
     public playerMovement playerScript;
     public AudioSource clock;
