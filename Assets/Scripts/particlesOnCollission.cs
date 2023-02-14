@@ -8,6 +8,11 @@ public class particlesOnCollission : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        boing.Play();
+        if(collision.gameObject.tag == "Player")
+        {
+            boing.time = 0.22f;
+            boing.Play();
+        }
+        
     }
 }
