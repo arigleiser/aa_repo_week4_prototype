@@ -6,9 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class timer : MonoBehaviour
 {
-    float countdown = 60f;
+    float countdown = 5f;
     public TMP_Text disvar;
     public playerMovement playerScript;
+    public AudioSource clock;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,16 +23,22 @@ public class timer : MonoBehaviour
         if (countdown > 0)
         {
             countdown -= Time.deltaTime;
+            if (countdown >=15 && countdown <= 16 && playerScript.isAlive) 
+            {
+                clock.Play();
+            }
         }
         double b = System.Math.Round(countdown, 0);
         disvar.text = "Seconds Remaining: " + b.ToString();
         if (countdown < 0)
         {
             //disvar.text = "Game Over!";
-             playerScript.isAlive = false;
+            playerScript.isAlive = false;
+            clock.Stop();
             // Application.Quit();
             // make reset and quit buttons appear
         }
+        
     }
 
     public void RestartGame()

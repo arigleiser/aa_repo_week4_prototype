@@ -23,25 +23,18 @@ public class gameManagerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(playerScript.upspeed);
         if (playerScript.isAlive == false)
         {
             gameOver();
         }
-
-        //else if (touchApple.isAlive == false)
-        //{
-        //    restart_quit.SetActive(true);
-        //}
-        // idk why this doesn't work- im trying to make it so that if it touches the floor, they lose
-        //else if (floor.isAlive == false)
-        //{
-        //    restart_quit.SetActive(true);
-        //}
     }
 
     public void gameOver()
     {
         playerScript.bgm.Stop();
+        playerScript.upspeed = 0;
+        playerScript.speed = 0;
         disvar.text = "Game Over!";
         restart_quit.SetActive(true);
         //Time.timeScale = 1;

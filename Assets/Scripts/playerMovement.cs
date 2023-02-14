@@ -9,13 +9,13 @@ public class playerMovement : MonoBehaviour
 {
     public float speed;
     float movex;
-    Rigidbody2D rb;
+    public Rigidbody2D rb;
     public Transform groundcheck;
     bool isGrounded;
     public float radius;
     public LayerMask groundlayer;
     public float jumpforce;
-    float upspeed;
+    public float upspeed;
 
     //public AudioSource playRight;
     //public AudioSource playLeft;
